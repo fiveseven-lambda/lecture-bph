@@ -1,0 +1,218 @@
+\documentclass[unicode, 12pt]{beamer}
+
+\usepackage{luatexja}
+
+\usepackage{chemfig}
+\setchemfig{
+  atom sep=1.5em,
+  angle increment=30,
+}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc}
+
+\usefonttheme{serif}
+
+\title{前立腺肥大症}
+\date{2025年1月29日（水）}
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}
+  \begin{itemize}
+    \item 穴埋めは記憶の定着に良いらしいので\\
+      国試範囲だけときどき空欄にしています
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{前立腺肥大症(BPH)}
+  前立腺（主に移行領域）の過形成結節\\
+  →下部尿路症状
+  \vfill
+  リスク因子
+  \begin{itemize}
+    \item \fbox{ \onslide<2>{加齢} }
+    \item 家族歴
+    \item 肥満、高血圧、高血糖、脂質異常症
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{テストステロン}
+  \begin{columns}
+    \begin{column}{.4 \textwidth}
+      胎児・新生児
+      \begin{itemize}
+        \item 男性生殖器の\\
+          正常な発達
+      \end{itemize}
+      \vspace{2\zh}
+      思春期〜
+      \begin{itemize}
+        \item 二次性徴
+        \item 精子形成
+      \end{itemize}
+    \end{column}
+    \begin{column}{.6 \textwidth}
+      \begin{tikzpicture}[samples=100]
+        \foreach \n in {-3, ..., 3}
+          \draw[domain={max(-2.5, \n - .9)*pi}:{min(2.5, \n + .9)*pi}]
+            plot (\x / 5, {sin((\n * pi + \x) r) / 5});
+        \draw (0, 2) node (AR) {+} node[right] {アンドロゲン受容体};
+        \draw[->] (.2, 1) -- (1, 1);
+        \node[right] at (1, 1) {転写};
+        \draw[->] (AR) -- (0, .5);
+        \node[above=of AR] (DHT) {ジヒドロテストステロン};
+        \node[above=of DHT] (T) {テストステロン};
+        \draw[->] (T) -- (DHT) node[midway, right] {\fbox{ \onslide<2>{5$\alpha$-還元酵素} }};
+        \draw[->] (DHT) -- (AR);
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}
+  \frametitle{テストステロン}
+  テストステロンはBPHの発症に関わる
+  \vfill
+  \begin{itemize}
+    \item テストステロンは前立腺の正常発達を促す
+    \vfill
+    \item 5$\alpha$-還元酵素阻害薬は\\
+      BPH患者の前立腺体積を減少させる
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{テストステロン}
+  \begin{center}
+    \fbox{\includegraphics[width=.9 \textwidth, viewport=50 620 500 750, clip]{Dutasteride.pdf}}
+    \vfill
+    \fbox{\includegraphics[width=.9 \textwidth, viewport=50 170 300 200, clip]{Dutasteride.pdf}}
+    \vfill
+    半年かかる
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{テストステロン}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (0, 0) -- (6, 0) node[below] {年齢};
+      \draw[->] (1, 3) -- (5, 1) node[right] {血中テストステロン濃度};
+      \draw[->] (1, 1) -- (5, 3) node[right] {BPH発症率};
+    \end{tikzpicture}
+    \vfill
+    変化の向きが逆
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{テストステロン}
+  \begin{itemize}
+    \item 5$\alpha$-還元酵素阻害薬の効果が出るまでに時間がかかる
+    \item 加齢による変化の向きが逆
+    \item[→] 直接の原因ではない？
+  \end{itemize}
+  \vfill
+  \begin{center}
+    \begin{tikzpicture}
+      \node (T) {テストステロン};
+      \node[right=of T] (BPH) {BPH};
+      \draw[->] (T) -- (BPH);
+      \draw[red, thick] (T.west) ++(-.5, 0)
+        +(.2, .2) -- +(-.2, -.2)
+        +(.2, -.2) -- +(-.2, .2);
+    \end{tikzpicture}
+  \end{center}
+  \vfill
+  \begin{center}
+    \begin{tikzpicture}
+      \node (T) {テストステロン};
+      \node[right=of T, draw, circle] (X) {？};
+      \node[right=of X] (BPH) {BPH};
+      \draw[->] (T) -- (X);
+      \draw[->] (T.east) +(.5, .5) -- (X);
+      \draw[->] (T.east) +(.5, -.5) -- (X);
+      \draw[->] (X) -- (BPH);
+      \draw[red, thick] (T.west) ++(-.5, 0)
+        circle[radius=.25] node{?};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+% \begin{frame}
+%   \frametitle{エストロゲン}
+%   \begin{center}
+%     \begin{tikzpicture}
+%       \node (A) {\tiny\chemfig{O=[1]*6(-=*6(---*6(-?-([3]-)(-[1]([3]=O)-[-1]-[-3]?)---)--)-([3]-)---)}};
+%       \node[below=of A] (T) {\tiny\chemfig{O=[1]*6(-=*6(---*6(-?-([3]-)(-[1]([3]-OH)-[-1]-[-3]?)---)--)-([3]-)---)}};
+%       \node[right=2cm of A] (E1) {\tiny\chemfig{HO-[1]*6(=-*6(---*6(-?-([3]-)(-[1]([3]=O)-[-1]-[-3]?)---)--)=-=-)}};
+%       \node[below=of E1] (E2) {\tiny\chemfig{HO-[1]*6(=-*6(---*6(-?-([3]-)(-[1]([3]-OH)-[-1]-[-3]?)---)--)=-=-)}};
+%       \node[right=1.2cm of $(E1)!.5!(E2)$] (E3) {\tiny\chemfig{HO-[1]*6(=-*6(---*6(-?-([3]-)(-[1]([3]-OH)-[-1](-OH)-[-3]?)---)--)=-=-)}};
+%       \node[above=of A.center] {アンドロゲン};
+%       \node[above=of $(E1)!.5!(E1-|E3)$] {エストロゲン};
+%       \begin{scope}[->]
+%         \draw (A.south) -- ($(T.north) - (0, .4)$);
+%         \draw (A.east) -- ($(E1.west) + (.6, 0)$) node[midway, above] {\fbox{\onslide<2>{アロマターゼ}}};
+%         \draw (T.east) -- ($(E2.west) + (.6, 0)$) node[midway, above] {\fbox{\onslide<2>{アロマターゼ}}};
+%         \draw (A.west) +(-.2, 0) -- +(.5, 0);
+%         \draw (T.west) +(-.2, 0) -- +(.5, 0);
+%         \draw (E1.south) -- ($(E2.north) - (0, .4)$);
+%         \draw (E1.east) -- ($(E3.north) - (.5, 0)$);
+%         \draw (E2.east) -- ($(E3.south) - (.5, 0)$);
+%       \end{scope}
+%     \end{tikzpicture}
+%   \end{center}
+%   男性でも少量産生されている。
+% \end{frame}
+\begin{frame}
+  \frametitle{炎症}
+  \begin{center}
+    \begin{tikzpicture}
+      \node (X) {細菌？ウイルス？};
+      \node[below=.5cm of X] (inf) {炎症};
+      \node[below=.5cm of inf] (cyt) {サイトカイン(IL-17, IL-8, ...)};
+      \node[below=.5cm of cyt] (gf) {成長因子(FGF-2, FGF-7, ...)};
+      \node[below=.5cm of gf] (prl) {前立腺組織の異常増殖・リモデリング};
+      \draw[->] (X) -- (inf) node[midway, right] {？};
+      \draw[->] (inf) -- (cyt);
+      \draw[->] (cyt) -- (gf);
+      \draw[->] (gf) -- (prl) node[midway, right] {？};
+    \end{tikzpicture}
+  \end{center}
+
+  もしかすると今後、他の慢性炎症性疾患のように
+
+  サイトカインや成長因子を標的とした
+
+  今より有効な治療薬が現れるかもしれない
+\end{frame}
+\begin{frame}
+  \frametitle{血流の改善が炎症を抑制する可能性}
+  \fbox{ \onslide<2>{$\alpha_1$遮断} }薬やホスホジエステラーゼ5阻害薬は\\
+  平滑筋を弛緩させ、尿道の狭窄を改善する
+  \vfill
+  →血流を改善させ、酸化ストレスを軽減、\\
+  炎症を抑制する可能性も考えられる
+\end{frame}
+\begin{frame}
+  \frametitle{QOLを低下させる疾患}
+  \begin{itemize}
+    \item 片頭痛
+    \item アトピー性皮膚炎
+    \item アレルギー性鼻炎
+    \item 過敏性腸症候群
+  \end{itemize}
+  \vfill
+  研究が進み、新しい治療が生まれてゆくと期待
+\end{frame}
+\begin{frame}
+  \frametitle{参考文献}
+  \begin{itemize}
+    \item 日本泌尿器科学会(2011)．『前立腺肥大症診療ガイドライン』RichHill Medical Inc.
+    \item デュタステリドカプセル0.5mgAV「日医工」添付文書2023年11月改訂（第1版）
+    \item So Inamura and Naoki Terada (2024).
+      Chronic inflammation in benign prostatic hyperplasia: Pathophysiology and treatment options.
+      \textit{International Journal of Urology}, \textit{31}(9), 968--974.
+    \item Conor M. Devlin, Matthew S. Simms and Norman J. Maitland (2021).
+      Benign prostatic hyperplasia---what do we know?
+      \textit{BJU International}, \textit{127}(4), 389--399.
+  \end{itemize}
+\end{frame}
+\end{document}
