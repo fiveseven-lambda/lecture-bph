@@ -11,6 +11,12 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning, calc}
 
+\usepackage{siunitx}
+\sisetup{
+  range-phrase={\text{〜}},
+  range-units=single,
+}
+
 \usefonttheme{serif}
 
 \title{前立腺肥大症}
@@ -27,14 +33,27 @@
 \end{frame}
 \begin{frame}
   \frametitle{前立腺肥大症(BPH)}
-  前立腺（主に移行領域）の過形成結節\\
+  前立腺（主に\fbox{ \onslide<2>{移行} }領域）の過形成結節\\
   →下部尿路症状
   \vfill
-  リスク因子
+  剖検で結節が見られる割合
+  \begin{itemize}
+    \item \numrange{31}{40}歳で\qty{8}{\percent}
+    \item \numrange{51}{60}歳で\qtyrange{40}{50}{\percent}
+    \item \num{>=80}歳で\qty{>80}{\percent}
+  \end{itemize}
+  \vfill
+  必ずしも下部尿路の閉塞、下部尿路症状を伴わない
+\end{frame}
+\begin{frame}
+  \frametitle{BPHのリスク因子}
   \begin{itemize}
     \item \fbox{ \onslide<2>{加齢} }
     \item 家族歴
     \item 肥満、高血圧、高血糖、脂質異常症
+
+    \item （リスク低下）野菜、穀物、大豆など：\\
+      イソフラボノイド、リグナン
   \end{itemize}
 \end{frame}
 \begin{frame}
@@ -177,10 +196,8 @@
     \end{tikzpicture}
   \end{center}
 
-  もしかすると今後、他の慢性炎症性疾患のように
-
-  サイトカインや成長因子を標的とした
-
+  もしかすると今後、他の慢性炎症性疾患のように\\
+  サイトカインや成長因子を標的とした\\
   今より有効な治療薬が現れるかもしれない
 \end{frame}
 \begin{frame}
@@ -205,6 +222,7 @@
 \begin{frame}
   \frametitle{参考文献}
   \begin{itemize}
+    \item MSDマニュアル「前立腺肥大症（BPH）」
     \item 日本泌尿器科学会(2011)．『前立腺肥大症診療ガイドライン』RichHill Medical Inc.
     \item デュタステリドカプセル0.5mgAV「日医工」添付文書2023年11月改訂（第1版）
     \item So Inamura and Naoki Terada (2024).
